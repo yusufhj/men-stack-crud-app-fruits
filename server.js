@@ -46,6 +46,13 @@ app.post('/fruits', async (req, res) => {
     res.redirect("/fruits");
 });
 
+app.get('/fruits/:id', async (req, res) => {
+    const fruit = await Fruit.findById(req.params.id);
+    console.log(fruit);
+    res.render('fruits/show.ejs', { fruit: fruit });
+    // res.send("hi")
+});
+
 app.listen(3000, () => {
   console.log("Listening on port 3000");
 });
